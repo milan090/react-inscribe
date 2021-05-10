@@ -1,4 +1,4 @@
-# react-inscribe (In development!!!)
+# react-inscribe
 
 > Rich Text Editor for React
 
