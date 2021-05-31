@@ -1,7 +1,20 @@
 import React from "react";
 
-import { useBold, InscribeEditor, OrderedList, UnorderedList, OutputData, ToolBox, Text } from "react-inscribe";
+import {
+  useBold,
+  InscribeEditor,
+  UnorderedList,
+  OrderedList,
+  OutputData,
+  ToolBox,
+  Text,
+  HeadingOne,
+  HeadingThree,
+  HeadingTwo,
+} from "react-inscribe";
 import "react-inscribe/dist/index.css";
+
+const blocks = [Text, HeadingOne, HeadingTwo, HeadingThree, UnorderedList, OrderedList];
 
 const App: React.FC = () => {
   const { isBoldOn, setIsBoldOn } = useBold();
@@ -12,9 +25,9 @@ const App: React.FC = () => {
 
   return (
     <div>
-      <ToolBox blocks={[OrderedList, UnorderedList, Text]} />
+      <ToolBox blocks={blocks} />
       <InscribeEditor
-        options={{ blocks: [OrderedList, UnorderedList, Text] }}
+        options={{ blocks }}
         data={{
           blocks: [
             {

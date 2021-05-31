@@ -6,7 +6,7 @@ const TextIcon: React.FC = () => (
   <span><strong>T</strong></span>
 )
 
-export const TextBlock: Block = {
+export const Text: Block = {
   component: TextComponent,
   type: "text",
   icon: TextIcon,

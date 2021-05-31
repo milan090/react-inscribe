@@ -1,14 +1,16 @@
 // import { useRefCallback } from "hooks/useRefCallback";
+import { HeadingTypes } from "blocks/Heading";
 import { useData } from "index";
 import React from "react";
 import ContentEditable, { ContentEditableEvent } from "react-contenteditable";
 import { BlockComponentProps } from "types/block.types";
 
-interface TextProps extends BlockComponentProps  {
+interface HeadingProps extends BlockComponentProps  {
   data: string;
+  type: HeadingTypes
 };
 
-export const TextComponent: React.FC<TextProps> = ({ index, data }) => {
+export const HeadingComponent: React.FC<HeadingProps> = ({ index, data, type }) => {
   const { setBlockData } = useData();
 
   const handleChange = (e: ContentEditableEvent) => {
@@ -29,7 +31,7 @@ export const TextComponent: React.FC<TextProps> = ({ index, data }) => {
       html={data}
       onChange={handleChange}
       onKeyDown={handleKeyDown}
-      tagName="p"
+      tagName={type === "heading1" ? "h1" : type === "heading2" ? "h2" : "h3"}
     />
   );
 };

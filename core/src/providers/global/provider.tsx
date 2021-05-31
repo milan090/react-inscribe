@@ -7,6 +7,7 @@ import { BlockData } from "types/data.types";
 export const GlobalProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [data, setData] = useState<OutputData>({ blocks: [] });
   const [isBoldOn, setIsBoldOn] = useState(false);
+  const [newBlockIndex, setNewBlockIndex] = useState<number | null>(null)
 
   const setBlockData = <Value extends unknown = any>(index: number, newValue: Value): void => {
     setData((data) => {
@@ -25,6 +26,8 @@ export const GlobalProvider: React.FC<{ children: React.ReactNode }> = ({ childr
       const newBlock: BlockData = { type, value };
 
       newData.blocks.splice(index, 0, newBlock);
+
+      setNewBlockIndex(index);
 
       return newData;
     });
@@ -64,6 +67,8 @@ export const GlobalProvider: React.FC<{ children: React.ReactNode }> = ({ childr
         setData,
         setBlockData,
         insertBlock,
+        newBlockIndex,
+        setNewBlockIndex,
         modifiers: {
           bold: {
             isBoldOn,
