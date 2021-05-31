@@ -5,7 +5,9 @@ interface InitialState {
   data: OutputData;
   setData: (data: OutputData) => void;
   setBlockData: <Value extends unknown = any>(index: number, newValue: Value) => void;
-  insertBlock: (type: string, value: any, index?: number) => void ;
+  insertBlock: (type: string, value: any, index?: number) => void;
+  newBlockIndex: number | null;
+  setNewBlockIndex: (index: number | null) => void;
   modifiers: {
     bold: {
       isBoldOn: boolean;
@@ -19,6 +21,8 @@ const initialState: InitialState = {
   setData: () => {},
   setBlockData: () => {},
   insertBlock: () => {},
+  newBlockIndex: null,
+  setNewBlockIndex: () => {},
   modifiers: {
     bold: {
       isBoldOn: false,

@@ -1,2 +1,3 @@
-export { ListBlock as List  } from "./List";
-export { TextBlock as Text } from "./Text";
+export { OrderedList, UnorderedList } from "./List";
+export { HeadingOne, HeadingThree, HeadingTwo } from "./Heading";
+export { Text } from "./Text";

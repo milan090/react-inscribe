@@ -1,4 +1,5 @@
 // import { useRefCallback } from "hooks/useRefCallback";
+import { ListTypes } from "blocks/List";
 import { useData } from "index";
 import React, { useEffect, useState } from "react";
 import { useRef } from "react";
@@ -9,9 +10,10 @@ import { setCaretToElement } from "../../utils/setCaret";
 
 interface ListProps extends BlockComponentProps  {
   data: string[];
+  type: ListTypes
 };
 
-export const ListComponent: React.FC<ListProps> = ({ index, data }) => {
+export const ListComponent: React.FC<ListProps> = ({ index, data, type }) => {
   const { setBlockData } = useData();
   const listRef = useRef<HTMLUListElement | null>(null);
   const [newListElementIndex] = useState<number>();
@@ -41,7 +43,7 @@ export const ListComponent: React.FC<ListProps> = ({ index, data }) => {
     <ContentEditable
       html={listHtml}
       onChange={handleChange}
-      tagName="ul"
+      tagName={ type === "orderedList" ? "ol" : "ul" }
       innerRef={listRef}
       // onKeyDown={handleKeyDown}
     />
