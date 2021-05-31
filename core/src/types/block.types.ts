@@ -3,6 +3,7 @@ import React from "react";
 export interface BlockComponentProps {
   index: number;
   data: any;
+  type: string;
 }
 
 export interface Block<Props extends BlockComponentProps = BlockComponentProps> {

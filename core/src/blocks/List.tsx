@@ -7,10 +7,18 @@ const ListIcon: React.FC = () => (
   <span><strong>L</strong></span>
 )
 
-export const ListBlock: Block = {
+export type ListTypes = "unorderedList" | "orderedList";
+
+export const OrderedListBlock: Block = {
   component: ListComponent,
-  type: "list",
+  type: "orderedList",
   icon: ListIcon,
   defaultValue: [""],
 }
 
+export const UnorderedListBlock: Block = {
+  component: ListComponent,
+  type: "unorderedList",
+  icon: ListIcon,
+  defaultValue: [""],
+}
