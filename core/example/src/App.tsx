@@ -1,6 +1,6 @@
 import React from "react";
 
-import { useBold, InscribeEditor, List, OutputData, ToolBox, Paragraph } from "react-inscribe";
+import { useBold, InscribeEditor, List, OutputData, ToolBox, Text } from "react-inscribe";
 import "react-inscribe/dist/index.css";
 
 const App: React.FC = () => {
@@ -12,9 +12,9 @@ const App: React.FC = () => {
 
   return (
     <div>
-      <ToolBox blocks={[List, Paragraph]} />
+      <ToolBox blocks={[List, Text]} />
       <InscribeEditor
-        options={{ blocks: [List, Paragraph] }}
+        options={{ blocks: [List, Text] }}
         data={{
           blocks: [
             {
