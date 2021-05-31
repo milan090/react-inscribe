@@ -1,6 +1,6 @@
 import React from "react";
 
-import { useBold, InscribeEditor, List, OutputData, ToolBox, Paragraph } from "react-inscribe";
+import { useBold, InscribeEditor, OrderedList, UnorderedList, OutputData, ToolBox, Text } from "react-inscribe";
 import "react-inscribe/dist/index.css";
 
 const App: React.FC = () => {
@@ -12,13 +12,13 @@ const App: React.FC = () => {
 
   return (
     <div>
-      <ToolBox blocks={[List, Paragraph]} />
+      <ToolBox blocks={[OrderedList, UnorderedList, Text]} />
       <InscribeEditor
-        options={{ blocks: [List, Paragraph] }}
+        options={{ blocks: [OrderedList, UnorderedList, Text] }}
         data={{
           blocks: [
             {
-              type: "list",
+              type: "unorderedList",
               value: ["hello"],
             },
           ],

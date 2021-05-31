@@ -4,11 +4,11 @@ import React from "react";
 import ContentEditable, { ContentEditableEvent } from "react-contenteditable";
 import { BlockComponentProps } from "types/block.types";
 
-interface ListProps extends BlockComponentProps  {
+interface TextProps extends BlockComponentProps  {
   data: string;
 };
 
-export const ParagraphComponent: React.FC<ListProps> = ({ index, data }) => {
+export const TextComponent: React.FC<TextProps> = ({ index, data }) => {
   const { setBlockData } = useData();
 
   const handleChange = (e: ContentEditableEvent) => {

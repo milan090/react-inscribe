@@ -1,2 +1,3 @@
-export { ListBlock as List  } from "./List";
-export { ParagraphBlock as Paragraph } from "./Paragraph";
+export { OrderedListBlock as OrderedList  } from "./List";
+export { UnorderedListBlock as UnorderedList } from "./List";
+export { TextBlock as Text } from "./Text";

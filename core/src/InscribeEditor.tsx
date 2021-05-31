@@ -38,9 +38,12 @@ export const InscribeEditor: React.FC<Props> = ({
 
   return (
     <div>
-      {data.blocks.map((block, i) => {
-        const BlockComponent = Blocks[block.type].component;
-        return <BlockComponent index={i} data={block.value} key={i} />;
+      {data.blocks.map(({ type, value }, i) => {
+        const BlockComponent = Blocks[type]?.component;
+
+        if (!BlockComponent) throw new Error("Invalid Block type. Your data might have broken due to an update or something else");
+
+        return <BlockComponent index={i} data={value} key={i} type={type} />;
       })}
     </div>
   );
