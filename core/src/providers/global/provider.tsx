@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { OutputData } from "types/data.types";
-import { modifyHtml } from "utils/htmlModifier";
 import { GlobalContext } from "./context";
 import { BlockData } from "types/data.types";
+import cuid from "cuid";
 
 export const GlobalProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [data, setData] = useState<OutputData>({ blocks: [] });
   const [isBoldOn, setIsBoldOn] = useState(false);
-  const [newBlockIndex, setNewBlockIndex] = useState<number | null>(null)
+  const [newBlockIndex, setNewBlockIndex] = useState<number | null>(null);
 
   const setBlockData = <Value extends unknown = any>(index: number, newValue: Value): void => {
     setData((data) => {
@@ -23,7 +23,7 @@ export const GlobalProvider: React.FC<{ children: React.ReactNode }> = ({ childr
   const insertBlock = (type: string, value: any, index: number = data.blocks.length): void => {
     setData((data) => {
       const newData = { blocks: [...data.blocks] };
-      const newBlock: BlockData = { type, value };
+      const newBlock: BlockData = { type, value, id: cuid() };
 
       newData.blocks.splice(index, 0, newBlock);
 
@@ -34,7 +34,7 @@ export const GlobalProvider: React.FC<{ children: React.ReactNode }> = ({ childr
   };
 
   useEffect(() => {
-    if (isBoldOn) modifyHtml("BOLD");
+    if (isBoldOn) document.execCommand("bold");
   }, [isBoldOn]);
 
   useEffect(() => {
@@ -44,7 +44,7 @@ export const GlobalProvider: React.FC<{ children: React.ReactNode }> = ({ childr
           case "b":
             event.stopPropagation();
             event.preventDefault();
-            console.log("Ctrl + B was pressed!");
+
             setIsBoldOn((isBoldOn) => !isBoldOn);
             break;
 

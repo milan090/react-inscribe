@@ -1,9 +1,0 @@
-/* add css module styles here (optional) */
-
-.editable * {
-  outline: none;
-}
-
-.editable:focus {
-  outline: none;
-}

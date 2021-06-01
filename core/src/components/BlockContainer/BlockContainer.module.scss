@@ -1,0 +1,24 @@
+.blockContainer {
+  display: flex;
+  cursor: default !important;
+  background-color: white;
+  padding: 0.5rem 2rem 0.5rem 1.25rem;
+  border-radius: 0.25rem;
+
+  .draggable {
+    display: block;
+    text-align: center;
+    width: 3rem;
+    cursor: grab;
+    
+    &:active {
+      cursor: grabbing;
+    }
+  }
+
+  *:nth-child(2) {
+    flex: 1 1 100%;
+    cursor: text;
+    outline: none;
+  }
+}

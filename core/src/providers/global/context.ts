@@ -3,7 +3,7 @@ import { OutputData } from "types/data.types";
 
 interface InitialState {
   data: OutputData;
-  setData: (data: OutputData) => void;
+  setData: React.Dispatch<React.SetStateAction<OutputData>>;
   setBlockData: <Value extends unknown = any>(index: number, newValue: Value) => void;
   insertBlock: (type: string, value: any, index?: number) => void;
   newBlockIndex: number | null;
