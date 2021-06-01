@@ -13,7 +13,7 @@ interface CodeProps extends BlockComponentProps {
 export const CodeComponent: React.FC<CodeProps> = ({ index, data }) => {
     const { setBlockData } = useData();
 
-    const handleChange = (value:any) => {
+    const handleChange = (value:string) => {
         setBlockData<string>(index, value);
     };
 
