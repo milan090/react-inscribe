@@ -17,7 +17,7 @@ export const TextComponent: React.FC<TextProps> = ({ index, data }) => {
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>): boolean | void => {
     if (e.key === "Enter") {
-      console.log("Enter")
+      
       e.preventDefault();
       document.execCommand("insertHTML", false, "<br/><br/>");
       return false;
