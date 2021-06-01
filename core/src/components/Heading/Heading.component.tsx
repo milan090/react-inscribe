@@ -5,10 +5,10 @@ import React from "react";
 import ContentEditable, { ContentEditableEvent } from "react-contenteditable";
 import { BlockComponentProps } from "types/block.types";
 
-interface HeadingProps extends BlockComponentProps  {
+interface HeadingProps extends BlockComponentProps {
   data: string;
-  type: HeadingTypes
-};
+  type: HeadingTypes;
+}
 
 export const HeadingComponent: React.FC<HeadingProps> = ({ index, data, type }) => {
   const { setBlockData } = useData();
@@ -19,12 +19,11 @@ export const HeadingComponent: React.FC<HeadingProps> = ({ index, data, type }) 
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>): boolean | void => {
     if (e.key === "Enter") {
-      console.log("Enter")
       e.preventDefault();
       document.execCommand("insertHTML", false, "<br/><br/>");
       return false;
     }
-  }
+  };
 
   return (
     <ContentEditable

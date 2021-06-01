@@ -7,4 +7,5 @@ export type DefaultTools = "text" | "orderList" | "unorderedList" | "heading1" |
 export interface BlockData<Type extends string = DefaultTools | string, Value extends object = any> {
   type: Type;
   value: Value;
+  id: string;
 }
