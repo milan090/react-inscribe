@@ -45,8 +45,11 @@
     "README.md"
   ],
   "dependencies": {
+    "@types/react-syntax-highlighter": "^13.5.0",
     "clone-deep": "^4.0.1",
+    "react-ace": "^9.4.0",
     "react-contenteditable": "^3.3.5",
+    "react-syntax-highlighter": "^15.4.3",
     "use-deep-compare-effect": "^1.6.1"
   }
 }

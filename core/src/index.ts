@@ -6,6 +6,6 @@ import { InscribeEditor } from "./InscribeEditor";
 import { GlobalProvider } from "./providers/global/provider";
 
 export { GlobalProvider as Provider, InscribeEditor, ToolBox };
-export {  useData, useBold };
+export { useData, useBold };
 export { OutputData };
-export { UnorderedList, OrderedList, Text,  HeadingOne, HeadingTwo, HeadingThree } from "blocks";
+export { UnorderedList, OrderedList, Text, HeadingOne, HeadingTwo, HeadingThree, Code } from "blocks";
