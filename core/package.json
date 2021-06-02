@@ -46,8 +46,10 @@
     "README.md"
   ],
   "dependencies": {
-    "@seznam/compose-react-refs": "^1.0.6",
     "clone-deep": "^4.0.1",
+    "react-ace": "^9.4.0",
+    "react-contenteditable": "^3.3.5",
+    "@seznam/compose-react-refs": "^1.0.6",
     "cuid": "^2.1.8",
     "react-beautiful-dnd": "^13.1.0",
     "react-contenteditable": "^3.3.5",

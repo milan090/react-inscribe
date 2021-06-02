@@ -11,10 +11,10 @@ import {
   HeadingOne,
   HeadingThree,
   HeadingTwo,
+  Code,
 } from "react-inscribe";
-import "react-inscribe/dist/index.css";
 
-const blocks = [Text, HeadingOne, HeadingTwo, HeadingThree, UnorderedList, OrderedList];
+const blocks = [Text, HeadingOne, HeadingTwo, HeadingThree, UnorderedList, OrderedList, Code];
 
 const App: React.FC = () => {
   const handleChange = (data: OutputData) => {
