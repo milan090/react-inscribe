@@ -1,4 +1,4 @@
-import { ToolBox } from "components/ToolBox";
+import { ToolBox } from "components/ToolBox/ToolBox";
 import { OutputData } from "types/data.types";
 import { useBold } from "./hooks/useBold";
 import { useData } from "./hooks/useData";

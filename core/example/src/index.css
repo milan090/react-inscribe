@@ -6,6 +6,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #F4F4F4;
 }
 
 code {
@@ -15,8 +16,13 @@ code {
 
 .editor {
   margin: 2rem 3rem;
+  display: flex;
 }
 
 .editor-blocks {
+  background-color: white;
+  margin: 0 3rem;
+  padding: 2rem 3rem 0 0.5rem;
   margin-top: 2rem;
+  width: 100%;
 }

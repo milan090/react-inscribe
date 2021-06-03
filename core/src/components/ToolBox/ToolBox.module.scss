@@ -1,0 +1,39 @@
+$gap: 2rem;
+
+.toolbox {
+  background-color: #f4f4f4;
+  border-radius: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &.horizontal {
+    padding: 1.25rem 2.5rem;
+    gap: $gap;
+    width: max-content;
+
+    .buttonBorder {
+      padding-right: 2rem;
+      border-right: 1px solid #777777;
+    }
+  }
+
+  &.vertical {
+    padding: 2.5rem 1.25rem;
+    flex-direction: column;
+    row-gap: $gap;
+    width: max-content;
+
+    .buttonBorder {
+      padding-bottom: 2rem;
+      border-bottom: 1px solid #777777;
+    }
+  }
+
+  button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
+}
