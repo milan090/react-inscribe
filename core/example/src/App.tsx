@@ -1,7 +1,6 @@
 import React from "react";
 
 import {
-  useBold,
   InscribeEditor,
   UnorderedList,
   OrderedList,
@@ -14,7 +13,23 @@ import {
   Code,
 } from "react-inscribe";
 
+import "react-inscribe/dist/index.css";
+
+// Nest tools like this to add seperators (border lines) in the toolbox
+const toolboxBlocks = [[Text, HeadingOne, HeadingTwo, HeadingThree], [UnorderedList, OrderedList, Code]];
+
+// Every block in the toolbox should be in this too
 const blocks = [Text, HeadingOne, HeadingTwo, HeadingThree, UnorderedList, OrderedList, Code];
+
+const defaultData: OutputData = {
+  blocks: [
+    {
+      type: "unorderedList",
+      value: ["hello"],
+      id: "asdsa",
+    },
+  ],
+}
 
 const App: React.FC = () => {
   const handleChange = (data: OutputData) => {
@@ -23,19 +38,12 @@ const App: React.FC = () => {
 
   return (
     <div className="editor">
-      <ToolBox blocks={blocks} />
+      <ToolBox blocks={toolboxBlocks} align="vertical" backgroundColor="white" />
+
       <div className="editor-blocks">
         <InscribeEditor
           options={{ blocks }}
-          data={{
-            blocks: [
-              {
-                type: "unorderedList",
-                value: ["hello"],
-                id: "asdsa",
-              },
-            ],
-          }}
+          data={defaultData}
           handleChange={handleChange}
         />
       </div>
