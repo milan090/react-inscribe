@@ -7,6 +7,8 @@ import cuid from "cuid";
 export const GlobalProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [data, setData] = useState<OutputData>({ blocks: [] });
   const [isBoldOn, setIsBoldOn] = useState(false);
+  const [isItalicOn, setIsItalicOn] = useState(false);
+  const [isUnderlineOn, setIsUnderlineOn] = useState(false);
   const [newBlockIndex, setNewBlockIndex] = useState<number | null>(null);
 
   const setBlockData = <Value extends unknown = any>(index: number, newValue: Value): void => {
@@ -35,7 +37,9 @@ export const GlobalProvider: React.FC<{ children: React.ReactNode }> = ({ childr
 
   useEffect(() => {
     if (isBoldOn) document.execCommand("bold");
-  }, [isBoldOn]);
+    if (isItalicOn) document.execCommand("italic");
+    if (isUnderlineOn) document.execCommand("underline");
+  }, [isBoldOn, isItalicOn, isUnderlineOn]);
 
   useEffect(() => {
     const handleKeyboardShortcuts = (event: KeyboardEvent) => {
@@ -46,6 +50,20 @@ export const GlobalProvider: React.FC<{ children: React.ReactNode }> = ({ childr
             event.preventDefault();
 
             setIsBoldOn((isBoldOn) => !isBoldOn);
+            break;
+          
+          case "i":
+            event.stopPropagation();
+            event.preventDefault();
+
+            setIsItalicOn((isItalicOn) => !isItalicOn);
+            break;
+          
+          case "u":
+            event.stopPropagation();
+            event.preventDefault();
+
+            setIsUnderlineOn((isUnderlineOn) => !isUnderlineOn);
             break;
 
           default:
@@ -73,6 +91,12 @@ export const GlobalProvider: React.FC<{ children: React.ReactNode }> = ({ childr
           bold: {
             isBoldOn,
             setIsBoldOn,
+          }, italic: {
+            isItalicOn,
+            setIsItalicOn,
+          }, underline: {
+            isUnderlineOn,
+            setIsUnderlineOn,
           },
         },
       }}

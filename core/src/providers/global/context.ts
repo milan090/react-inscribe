@@ -12,21 +12,37 @@ interface InitialState {
     bold: {
       isBoldOn: boolean;
       setIsBoldOn: (isBoldOn: boolean) => void;
-    };
+    },
+    italic: {
+      isItalicOn: boolean;
+      setIsItalicOn: (isItalicOn: boolean) => void;
+    },
+    underline: {
+      isUnderlineOn: boolean;
+      setIsUnderlineOn: (isUnderlineOn: boolean) => void;
+    },
   };
 }
 
 const initialState: InitialState = {
   data: { blocks: [] },
-  setData: () => {},
-  setBlockData: () => {},
-  insertBlock: () => {},
+  setData: () => { },
+  setBlockData: () => { },
+  insertBlock: () => { },
   newBlockIndex: null,
-  setNewBlockIndex: () => {},
+  setNewBlockIndex: () => { },
   modifiers: {
     bold: {
       isBoldOn: false,
-      setIsBoldOn: () => {},
+      setIsBoldOn: () => { },
+    },
+    italic: {
+      isItalicOn: false,
+      setIsItalicOn: () => { },
+    },
+    underline: {
+      isUnderlineOn: false,
+      setIsUnderlineOn: () => { },
     },
   },
 };
