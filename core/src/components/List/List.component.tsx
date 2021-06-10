@@ -8,10 +8,12 @@ import { BlockComponentProps } from "types/block.types";
 // import { useBold } from "../..";
 import { setCaretToElement } from "../../utils/setCaret";
 
-interface ListProps extends BlockComponentProps  {
+import styles from "./List.styles.scss";
+
+interface ListProps extends BlockComponentProps {
   data: string[];
-  type: ListTypes
-};
+  type: ListTypes;
+}
 
 export const ListComponent: React.FC<ListProps> = ({ index, data, type }) => {
   const { setBlockData } = useData();
@@ -43,9 +45,9 @@ export const ListComponent: React.FC<ListProps> = ({ index, data, type }) => {
     <ContentEditable
       html={listHtml}
       onChange={handleChange}
-      tagName={ type === "orderedList" ? "ol" : "ul" }
+      tagName={type === "orderedList" ? "ol" : "ul"}
       innerRef={listRef}
-      // onKeyDown={handleKeyDown}
+      className={styles.list}
     />
   );
 };

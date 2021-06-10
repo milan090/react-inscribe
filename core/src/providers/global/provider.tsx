@@ -3,6 +3,7 @@ import { OutputData } from "types/data.types";
 import { GlobalContext } from "./context";
 import { BlockData } from "types/data.types";
 import cuid from "cuid";
+import { Selected } from "types/common.types";
 
 export const GlobalProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [data, setData] = useState<OutputData>({ blocks: [] });
@@ -10,6 +11,7 @@ export const GlobalProvider: React.FC<{ children: React.ReactNode }> = ({ childr
   const [isItalicOn, setIsItalicOn] = useState(false);
   const [isUnderlineOn, setIsUnderlineOn] = useState(false);
   const [newBlockIndex, setNewBlockIndex] = useState<number | null>(null);
+  const [selected, setSelected] = useState<Selected>({ type: "", text: "", index: -1 })
 
   const setBlockData = <Value extends unknown = any>(index: number, newValue: Value): void => {
     setData((data) => {
@@ -87,6 +89,8 @@ export const GlobalProvider: React.FC<{ children: React.ReactNode }> = ({ childr
         insertBlock,
         newBlockIndex,
         setNewBlockIndex,
+        selected,
+        setSelected,
         modifiers: {
           bold: {
             isBoldOn,
@@ -94,7 +98,7 @@ export const GlobalProvider: React.FC<{ children: React.ReactNode }> = ({ childr
           }, italic: {
             isItalicOn,
             setIsItalicOn,
-          }, underline: {
+          }, underline: { 
             isUnderlineOn,
             setIsUnderlineOn,
           },

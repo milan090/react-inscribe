@@ -12,6 +12,7 @@ export const TextComponent: React.FC<TextProps> = ({ index, data }) => {
   const { setBlockData } = useData();
 
   const handleChange = (e: ContentEditableEvent) => {
+    console.log("Change", e.target.value)
     setBlockData<string>(index, e.target.value);
   };
 

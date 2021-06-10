@@ -21,4 +21,9 @@ export interface Block<Type extends string = string, Props extends BlockComponen
   icon: React.FC;
 
   defaultValue: any;
+
+  /**
+   * Used for display and tooltips
+   */
+  label: string;
 }

@@ -82,6 +82,7 @@ export const HeadingOne: Block<HeadingTypes> = {
   type: "heading1",
   icon: HeadingOneIcon,
   defaultValue: "",
+  label: "Heading 1"
 }
 
 export const HeadingTwo: Block<HeadingTypes> = {
@@ -89,6 +90,7 @@ export const HeadingTwo: Block<HeadingTypes> = {
   type: "heading2",
   icon: HeadingTwoIcon,
   defaultValue: "",
+  label: "Heading 2"
 }
 
 export const HeadingThree: Block<HeadingTypes> = {
@@ -96,4 +98,5 @@ export const HeadingThree: Block<HeadingTypes> = {
   type: "heading3",
   icon: HeadingThreeIcon,
   defaultValue: "",
+  label: "Heading 3"
 }

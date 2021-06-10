@@ -1,11 +1,14 @@
-import React from "react";
+import { useGlobalContext } from "providers/global/context";
+import React, { useRef } from "react";
 import { Draggable } from "react-beautiful-dnd";
 import styles from "./BlockContainer.module.scss";
+import composeRefs from "@seznam/compose-react-refs";
 
 type Props = {
   children: React.ReactNode;
   id: string;
   index: number;
+  type: string;
 };
 
 const DraggableIcon: React.FC = (props) => {
@@ -25,15 +28,24 @@ const DraggableIcon: React.FC = (props) => {
   );
 };
 
-export const BlockContainer: React.FC<Props> = ({ children, id, index }) => {
+export const BlockContainer: React.FC<Props> = ({ children, id, index, type }) => {
+  const { setSelected } = useGlobalContext();
+  const containerRef = useRef<HTMLDivElement | null>(null);
+
+  const handleTextSelection = () => {
+    setSelected((selected) => selected && { ...selected, type, index });
+  };
+
   return (
     <Draggable key={id} draggableId={id} index={index}>
       {(provided) => (
         <div
-          ref={provided.innerRef}
+          ref={composeRefs<HTMLDivElement>(containerRef, provided.innerRef)}
           {...provided.draggableProps}
           {...provided.dragHandleProps}
           className={styles.blockContainer}
+          // onSelect={handleTextSelection}
+          onMouseDown={handleTextSelection}
         >
           <span className={styles.draggable}>
             <DraggableIcon />

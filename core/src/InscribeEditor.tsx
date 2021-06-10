@@ -10,6 +10,7 @@ import styles from "./styles.module.scss";
 import { BlockContainer } from "components/BlockContainer/BlockContainer.component";
 import { DragDropContext, DragStart, Droppable, DropResult } from "react-beautiful-dnd";
 import composeRefs from "@seznam/compose-react-refs";
+import { SelectionMenu } from "components/SelectionMenu/SelectionMenu.component";
 
 interface Props {
   handleChange?: (data: OutputData) => void;
@@ -23,7 +24,7 @@ export const InscribeEditor: React.FC<Props> = ({
   data: defaultData = { blocks: [] },
 }) => {
   const { data, setData } = useData();
-  const { setNewBlockIndex, newBlockIndex } = useGlobalContext();
+  const { setNewBlockIndex, newBlockIndex, setSelected } = useGlobalContext();
   const editorRef = useRef<HTMLDivElement | null>(null);
 
   // Convert the Blocks Array into a Map
@@ -67,6 +68,20 @@ export const InscribeEditor: React.FC<Props> = ({
     }
   };
 
+  const handleTextSelectionChange = () => {
+    const selection = window.getSelection()?.toString();
+
+    setSelected((selected) => ({ ...selected, text: selection || "" }));
+  };
+
+  useEffect(() => {
+    document.addEventListener("selectionchange", handleTextSelectionChange);
+
+    return () => {
+      document.removeEventListener("selectionchange", handleTextSelectionChange);
+    };
+  }, []);
+
   useDeepCompareEffect(() => {
     if (defaultData) setData(defaultData);
   }, [defaultData]);
@@ -87,34 +102,37 @@ export const InscribeEditor: React.FC<Props> = ({
   }, [newBlockIndex]);
 
   return (
-    <DragDropContext onDragEnd={handleOnDragEnd} onDragStart={handleOnDragStart}>
-      <Droppable droppableId="blocks">
-        {(provided) => {
-          return (
-            <div
-              ref={composeRefs<HTMLDivElement>(editorRef, provided.innerRef)}
-              {...provided.droppableProps}
-              className={styles.editor}
-            >
-              {data.blocks.map(({ type, value, id }, i) => {
-                const BlockComponent = Blocks[type]?.component;
+    <div>
+      <DragDropContext onDragEnd={handleOnDragEnd} onDragStart={handleOnDragStart}>
+        <Droppable droppableId="blocks">
+          {(provided) => {
+            return (
+              <div
+                ref={composeRefs<HTMLDivElement>(editorRef, provided.innerRef)}
+                {...provided.droppableProps}
+                className={styles.editor}
+              >
+                {data.blocks.map(({ type, value, id }, i) => {
+                  const BlockComponent = Blocks[type]?.component;
 
-                if (!BlockComponent)
-                  throw new Error(
-                    "Invalid Block type. Your data might have broken due to an update or something else"
+                  if (!BlockComponent)
+                    throw new Error(
+                      "Invalid Block type. Your data might have broken due to an update or something else"
+                    );
+
+                  return (
+                    <BlockContainer key={id} id={id} index={i} type={type}>
+                      <BlockComponent index={i} data={value} type={type} />
+                    </BlockContainer>
                   );
-
-                return (
-                  <BlockContainer key={id} id={id} index={i}>
-                    <BlockComponent index={i} data={value} type={type} />
-                  </BlockContainer>
-                );
-              })}
-              {provided.placeholder}
-            </div>
-          );
-        }}
-      </Droppable>
-    </DragDropContext>
+                })}
+                {provided.placeholder}
+              </div>
+            );
+          }}
+        </Droppable>
+      </DragDropContext>
+      <SelectionMenu blocks={options.blocks} />
+    </div>
   );
 };
