@@ -25,5 +25,6 @@ export const Code: Block = {
     type: "code",
     icon: CodeIcon,
     defaultValue: "",
+    label: "Code"
 }
 

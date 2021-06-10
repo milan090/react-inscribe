@@ -58,6 +58,7 @@ export const OrderedList: Block = {
   type: "orderedList",
   icon: OrderedListIcon,
   defaultValue: [""],
+  label: "Ordered List"
 }
 
 export const UnorderedList: Block = {
@@ -65,4 +66,5 @@ export const UnorderedList: Block = {
   type: "unorderedList",
   icon: UnorderedListIcon,
   defaultValue: [""],
+  label: "Unordered List"
 }

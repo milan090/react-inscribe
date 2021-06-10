@@ -1,0 +1,86 @@
+@mixin dropdown {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  align-items: flex-start;
+  padding: 1rem 1.25rem 1rem 1rem;
+  box-shadow: 0px 4px 12px rgba(51, 51, 51, 0.1);
+  row-gap: 0.75rem;
+  
+  button {
+    text-align: left;
+    width: 100%;
+    border-radius: 0.25rem;
+  }
+}
+
+$background-hover: rgba(64, 157, 223, 0.15);
+
+.menu {
+  position: fixed;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+
+  background-color: white;
+  border: 1px solid #f3f3f3;
+  border-radius: 4px;
+  box-shadow: 0px 4px 12px rgba(51, 51, 51, 0.1);
+
+  button.convert {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .convertOptions {
+    @include dropdown;
+
+    position: absolute;
+    top: 50px;
+    left: 0;
+
+    button.convertOption {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.25rem 0.5rem;
+
+      span.convertIcon {
+        display: flex;
+        width: 1rem !important;
+        justify-content: flex-start;
+      }
+    }
+  }
+
+  .verticalSeperator {
+    border: 1px solid #c9cbcc;
+    height: 1rem;
+  }
+
+  .moreMenu {
+    @include dropdown;
+
+    position: absolute;
+    right: 0;
+    top: 50px;
+    width: 100px;
+  } 
+
+  button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    padding: 0.25rem 0.5rem;
+
+    transition: background-color 100ms ease-out;
+
+    &:hover {
+      background-color: $background-hover;
+    }
+  }
+}
